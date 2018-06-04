@@ -1,8 +1,0 @@
-directories:
-  output: dist
-  buildResources: build
-appId: com.notchat.assigned
-mac:
-  category: public.app-category.developer-tools
-publish: null
-electronVersion: 1.8.2

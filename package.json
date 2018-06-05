@@ -1,14 +1,13 @@
 {
   "name": "assigned",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Assigned - See what issues await you",
   "main": "main.js",
   "build": {
-    "appId": "com.notchat.assigned",
+    "appId": "com.assignedto.assigned",
     "mac": {
       "category": "public.app-category.developer-tools"
-    },
-    "publish": null
+    }
   },
   "scripts": {
     "start": "electron .",
@@ -20,8 +19,7 @@
   "keywords": [
     "Electron"
   ],
-  "author": "GitHub",
-  "license": "CC0-1.0",
+  "author": "Jonathan Holt",
   "devDependencies": {
     "electron": "^2.0.2",
     "electron-builder": "^20.0.6"

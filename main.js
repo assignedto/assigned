@@ -93,6 +93,9 @@ ipc.on('loaded', (event, arg) => {
       arg = 'error';
     }
 
+    const issues = json.map(issue => issue.id);
+    store.set('issues', issues);
+
     event.sender.send(arg, json);
   }).catch((err) => {
     console.log(err);
@@ -113,7 +116,21 @@ ipc.on('update', (event, arg) => {
   })
   .then((json) => {
     if (json.length > 0) {
-      event.sender.send(arg, json);
+      const issues = store.get('issues');
+
+      const data = json.map((issue) => {
+        if (issues.indexOf(issue.id) === -1) {
+          return issue;
+        }
+      }).filter(issue => issue);
+
+      if (data.length > 0) {
+        const dataId = data.map(issue => data.id);
+        const allIssues = issues.concat([], dataId);
+
+        store.set('issues', allIssues);
+        event.sender.send(arg, data);
+      }
     }
   })
   .catch((err) => {

@@ -7,7 +7,12 @@
     "appId": "com.assignedto.assigned",
     "mac": {
       "category": "public.app-category.developer-tools"
-    }
+    },
+    "publish": [{
+       "provider": "github",
+       "owner": "assignedto",
+       "repo": "assigned"
+     }]
   },
   "scripts": {
     "start": "electron .",

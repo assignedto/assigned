@@ -6,7 +6,7 @@ See what issues you are assigned to on Github.
 
 Currently only available for macos
 
-[Macos dmg download] (https://github.com/assignedto/assigned/releases/download/v0.0.3/assigned-0.0.3.dmg) 47.4 MB
+[Macos dmg download](https://github.com/assignedto/assigned/releases/download/v0.0.3/assigned-0.0.3.dmg) 47.4 MB
 
 
 ## Features

@@ -4,9 +4,11 @@ See what issues you are assigned to on Github.
 
 ## Install
 
-Currently only available for macos
+Currently only available for macOS
 
-[Macos dmg download](https://github.com/assignedto/assigned/releases/download/v0.0.3/assigned-0.0.3.dmg) 47.4 MB
+#### Download 
+
+- [macOS](https://github.com/assignedto/assigned/releases/download/v0.0.4/assigned-0.0.4.dmg) [47.4 MB]
 
 
 ## Features

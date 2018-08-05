@@ -1,5 +1,3 @@
-require('dotenv').config();
-
 const menubar = require('menubar');
 const fetch = require('electron-fetch');
 const electron = require('electron');
@@ -21,7 +19,7 @@ const settingMenu = new Menu();
 const prefix_url = 'https://api.github.com/user';
 
 const retrieve = (url, token) => {
-  return fetch(url, {
+  return fetch.default(url, {
     headers: {
       Authorization: `token ${token}`,
       Accept: 'application/vnd.github.v3.raw'
@@ -110,32 +108,34 @@ ipc.on('update', (event, arg) => {
   const since = `${moment(time).utc().format('YYYY-MM-DDTHH:mm')}Z`;
   const url = `${prefix_url}/issues?filter=assigned&since=${since}`;
 
-  retrieve(url, token).then((json) => {
-    store.set('time', moment().utc());
-    return json;
-  })
-  .then((json) => {
-    if (json.length > 0) {
-      const issues = store.get('issues');
+  if (token) {
+    retrieve(url, token).then((json) => {
+      store.set('time', moment().utc());
+      return json;
+    })
+    .then((json) => {
+      if (json.length > 0) {
+        const issues = store.get('issues');
 
-      const data = json.map((issue) => {
-        if (issues.indexOf(issue.id) === -1) {
-          return issue;
+        const data = json.map((issue) => {
+          if (issues.indexOf(issue.id) === -1) {
+            return issue;
+          }
+        }).filter(issue => issue);
+
+        if (data.length > 0) {
+          const dataId = data.map(issue => data.id);
+          const allIssues = issues.concat([], dataId);
+
+          store.set('issues', allIssues);
+          event.sender.send(arg, data);
         }
-      }).filter(issue => issue);
-
-      if (data.length > 0) {
-        const dataId = data.map(issue => data.id);
-        const allIssues = issues.concat([], dataId);
-
-        store.set('issues', allIssues);
-        event.sender.send(arg, data);
       }
-    }
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  }
 });
 
 ipc.on('show-context-menu', (event) => {
@@ -144,8 +144,8 @@ ipc.on('show-context-menu', (event) => {
 
 ipc.on('login', (event) => {
   const config = {
-    client_id: process.env.CLIENT_ID,
-    client_secret: process.env.CLIENT_SECRET,
+    client_id: 'a26ab83005e588b2866c',
+    client_secret: '355ecb4a6d17358f1469c68444a853d29b350b79',
     scope: 'user, repo',
     redirect_uri: 'http://assigned',
     authorize_url: 'https://github.com/login/oauth/authorize',

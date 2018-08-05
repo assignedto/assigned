@@ -1,6 +1,6 @@
 {
   "name": "assigned",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Assigned - See what issues await you",
   "main": "main.js",
   "build": {
@@ -8,11 +8,13 @@
     "mac": {
       "category": "public.app-category.developer-tools"
     },
-    "publish": [{
-       "provider": "github",
-       "owner": "assignedto",
-       "repo": "assigned"
-     }]
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "assignedto",
+        "repo": "assigned"
+      }
+    ]
   },
   "scripts": {
     "start": "electron .",
@@ -26,18 +28,17 @@
   ],
   "author": "Jonathan Holt",
   "devDependencies": {
-    "electron": "^2.0.2",
-    "electron-builder": "^20.0.6"
+    "electron": "^2.0.6",
+    "electron-builder": "^20.26.1"
   },
   "dependencies": {
-    "dotenv": "^5.0.0",
     "electron-contextmenu-middleware": "^1.0.3",
-    "electron-fetch": "^1.1.0",
+    "electron-fetch": "^1.2.1",
     "electron-input-menu": "^2.1.0",
     "electron-is-dev": "^0.3.0",
-    "electron-oauth-helper": "^2.0.2",
-    "electron-store": "^1.3.0",
-    "electron-updater": "^2.21.10",
+    "electron-oauth-helper": "^2.0.3",
+    "electron-store": "^2.0.0",
+    "electron-updater": "^3.0.3",
     "menubar": "^5.2.3",
     "moment": "^2.22.2",
     "query-string": "^6.1.0"

@@ -8,11 +8,14 @@ const queryString = require('query-string');
 const { autoUpdater } = require("electron-updater");
 const { OAuth2Provider } = require('electron-oauth-helper');
 
+require('electron-context-menu')();
+
 const ipc = electron.ipcMain;
 const BrowserWindow = electron.BrowserWindow;
 const Menu = electron.Menu;
 const MenuItem = electron.MenuItem
 const Notification = electron.Notification;
+const app = electron.app;
 
 const store = new Store();
 const settingMenu = new Menu();
@@ -69,6 +72,8 @@ const setMenu = () => {
     settingMenu.append(new MenuItem({ label: 'Log out', click: () => { store.set('token', null); mb.window.reload();} }));
   }
   settingMenu.append(new MenuItem({ label: 'Open on startup', type: 'checkbox', checked: store.get('open'), click: () => {changeOpenLogin();}}));
+  settingMenu.append(new MenuItem({ type: 'separator' }))
+  settingMenu.append(new MenuItem({ label: 'About', selector: 'orderFrontStandardAboutPanel:' }));
   settingMenu.append(new MenuItem({ label: 'Quit', click: () => { mb.app.quit() }}));
 };
 
@@ -178,4 +183,21 @@ ipc.on('login', (event) => {
       window.close();
       mb.showWindow();
     }).catch(error => console.error(error));
+});
+
+app.on('ready', () => {
+  const template = [{
+    label: 'Edit',
+    submenu: [
+      { label: 'Undo', accelerator: 'CmdOrCtrl+Z', selector: 'undo:' },
+      { label: 'Redo', accelerator: 'Shift+CmdOrCtrl+Z', selector: 'redo:' },
+      { type: 'separator' },
+      { label: 'Cut', accelerator: 'CmdOrCtrl+X', selector: 'cut:' },
+      { label: 'Copy', accelerator: 'CmdOrCtrl+C', selector: 'copy:' },
+      { label: 'Paste', accelerator: 'CmdOrCtrl+V', selector: 'paste:' },
+      { label: 'Select All', accelerator: 'CmdOrCtrl+A', selector: 'selectAll:' }
+    ]}
+  ];
+
+  Menu.setApplicationMenu(Menu.buildFromTemplate(template));
 });

@@ -1,6 +1,6 @@
 {
   "name": "assigned",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Assigned - See what issues await you",
   "main": "main.js",
   "build": {
@@ -32,6 +32,7 @@
     "electron-builder": "^20.26.1"
   },
   "dependencies": {
+    "electron-context-menu": "^0.10.0",
     "electron-contextmenu-middleware": "^1.0.3",
     "electron-fetch": "^1.2.1",
     "electron-input-menu": "^2.1.0",

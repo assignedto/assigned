@@ -8,7 +8,7 @@ Currently only available for macOS
 
 #### Download 
 
-- [macOS](https://github.com/assignedto/assigned/releases/download/v0.0.4/assigned-0.0.4.dmg) [47.4 MB]
+- [macOS](https://github.com/assignedto/assigned/releases/download/v0.0.5/assigned-0.0.5.dmg) [47.4 MB]
 
 
 ## Features

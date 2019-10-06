@@ -1,7 +1,7 @@
 {
   "name": "assigned",
   "version": "1.0.0",
-  "description": "Assigned - See what issues await you",
+  "description": "Assigned - See what issues await you.",
   "main": "main.js",
   "build": {
     "appId": "com.assignedto.assigned",

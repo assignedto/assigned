@@ -1,4 +1,4 @@
-const menubar = require('menubar');
+const { menubar } = require('menubar');
 const fetch = require('electron-fetch');
 const electron = require('electron');
 const moment = require('moment');
@@ -36,11 +36,16 @@ const retrieve = (url, token) => {
 };
 
 const mb = menubar({
-  width: 300,
-  height: 400,
+  browserWindow: {
+    width: 300,
+    y: 30,
+    height: 400,
+    webPreferences: {
+      nodeIntegration: true
+    }
+  },
   resizable: isDev || false,
   icon: __dirname + '/IconTemplate.png',
-  y: 30,
   tooltip: 'Assigned - See what issues await you'
 });
 

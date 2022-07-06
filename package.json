@@ -41,7 +41,7 @@
     "electron-store": "5.0.0",
     "electron-updater": "4.1.2",
     "menubar": "6.0.8",
-    "moment": "2.24.0",
+    "moment": "2.29.4",
     "query-string": "6.8.3"
   }
 }
